@@ -5,7 +5,10 @@ version=$1
 
 tag="ghcr.io/korylprince/kmfddm-docker"
 
-docker build --no-cache --build-arg "VERSION=$version" --tag "$tag:$version" .
+docker build --no-cache --build-arg "VERSION=$version" \
+    --label "org.opencontainers.image.source=https://github.com/korylprince/kmfddm-docker" \
+    --label "org.opencontainers.image.title=kmfddm-docker" \
+    --tag "$tag:$version" .
 
 docker push "$tag:$version"
 
